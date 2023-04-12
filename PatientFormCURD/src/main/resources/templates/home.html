@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr >
+         <th>id</th>
+         <th>name</th>
+         <th>Age</th>
+         <th>Gender</th>
+         <th>Sample</th>
+         <th>Address</th>
+         <th>User Name</th>
+         <th>Department</th>
+         <th>Email</th>
+         <th>Profile Image</th>
+         <th>Doc</th>
+         <th>Status</th>
+         <th>BirthDate</th>
+         <th>Submission Date</th>
+         <th>Earning</th>
+         <th>Action</th>
+        </tr>
+        <tr th:each="patient:${listofAllPatinetInfo}">
+            <td th:text="${patient.id}"></td>
+            <td th:text="${patient.name}"></td>
+            <td th:text="${patient.age}"></td>
+            <td th:text="${patient.sex}"></td>
+            <td th:text="${patient.sample}"></td>
+            <td th:text="${patient.address}"></td>
+            <td th:text="${patient.username}"></td>
+            <td th:text="${patient.department}"></td>
+            <td th:text="${patient.email}"></td>
+            <td ><img alt="" th:src="*{'data:image/jpeg;base64,'+{patient.profileImage}}" style="width: 30px;height: 30px;"></td>
+            <td ><img alt="" th:src="*{'data:image/jpeg;base64,'+{patient.doc}}" style="width: 30px;height: 30px;"></td>
+            <td th:text="${patient.status}"></td>
+            <td th:text="${patient.birthDate}"></td>
+            <td th:text="${patient.submissionDate}"></td>
+            <td th:text="${patient.earning}"></td>
+            <td>
+                <a th:href="@{/PatientUpdate/{id}(id=${patient.id})}">Update</a>
+                <a th:href="@{/deletePatient/{id}(id=${patient.id})}">Delete</a></td>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          href=
+                  "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <style>
+        *{
+            margin: 5px;
+        }
+        .toggle {
+            margin-top: 100px;
+            font-size: 20px;
+        }
+        h1 {
+            color: green;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>Patient Info Add</h1>
+<form th:action="@{/saveNew}" enctype="multipart/form-data" method="post" th:object="${patientupdate}">
+    <input type="hidden"  th:field="*{id}">
+    <input type="text"  th:field="*{name}" placeholder="Name"> <br>
+    <input type="number"  th:field="*{age}" placeholder="Age"><br>
+    <input type="radio" id="male" th:field="*{sex}" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" th:field="*{sex}" value="Female">
+    <label for="female">Female</label>
+    <input type="radio" id="other"  th:field="*{sex}" value="Other">
+    <label for="other">Other</label><br>
+    <input type="text"  th:field="*{sample}" placeholder="sample"><br>
+    <input type="text"  th:field="*{address}" placeholder="address"><br>
+    <input type="text"  th:field="*{username}" placeholder="username"><br>
+    <input type="password"  th:field="*{password}" placeholder="password"><br>
+
+    <input type="checkbox" id="Pathology"  th:field="*{department}" value="Pathology">
+    <label for="Pathology">Pathology</label>
+
+    <input type="checkbox" id="Biochemistry"  th:field="*{department}" value="Biochemistry">
+    <label for="Biochemistry">Biochemistry</label>
+
+    <input type="checkbox" id="Haematology"  th:field="*{department}" value="Haematology"
+    <label for="Haematology">Haematology</label><br>
+
+    <input type="email"  th:field="*{email}" placeholder="email"><br>
+
+    <input th:type="file" name="file1">
+    <input th:type="file" name="file2">
+
+
+    <!--        <input th:type="checkbox" id="switch"-->
+    <!--               class="checkbox" th:field="*{status}" checked/>-->
+    <!--        <label for="switch" class="toggle">-->
+
+
+    <!--            <p>OFF    ON</p>-->
+
+
+    <!--        </label>-->
+    <div class="toggle">
+        <div class="custom-control custom-switch">
+            <input type="checkbox"
+                   class="custom-control-input"
+                   id="toggleSwitches" th:field="*{status}"/>
+            <label class="custom-control-label"
+                   for="toggleSwitches">
+                Status
+            </label>
+        </div>
+    </div>
+
+
+    <!--    <label class="switch">-->
+    <!--        <input type="checkbox"  th:field="*{status}">-->
+    <!--        <span class="slider round"></span>-->
+    <!--&lt;!&ndash;        <label for="status">Status</label><br>&ndash;&gt;-->
+    <!--    </label><br>-->
+
+    <!--    <input type="checkbox" id="status" th:field="*{status}" >-->
+    <!--    <label for="status">Status</label><br>-->
+
+    <label for="points">Points (between 0 and 100000):</label>
+    <input type="range" id="points" name="points" th:field="*{earning}" min="0" max="100000"><br>
+    <!--    <input type="text" id="birthdate" th:field="*{birthDate}"><br>-->
+    <input th:type="date"  th:field="*{birthDate}"><br>
+    <!--    <input th:type="date"  th:field="*{submissionDate}"><br>-->
+    <!--    <input type="date" id="birthDate" th:value="${birthDate}" th:name="birthDate"><br>-->
+    <button type=submit>Save</button>
+</form>
+</body>
+</html>
